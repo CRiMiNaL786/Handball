@@ -4,7 +4,7 @@ Soccer mod for bombsquad v1.7.28
 #
 """Hockey game and support classes."""
 
-# ba_meta require api 8
+# ba_meta require api 9
 # (see https://ballistica.net/wiki/meta-tag-system)
 
 from __future__ import annotations
@@ -164,7 +164,7 @@ class HockeyGame(bs.TeamGameActivity[Player, Team]):
         self._foghorn_sound = bs.getsound('foghorn')
         self._swipsound = bs.getsound('swip')
         self._whistle_sound = bs.getsound('refWhistle')
-        self.puck_mesh = bs.getmesh('bomb')
+        self.puck_mesh = bs.getmesh('ImpactBomb')
         self.puck_tex = bs.gettexture('bonesColor')
         self._puck_sound = bs.getsound('metalHit')
         self._ice_floor = bool(settings.get('Ice Floor', True))
@@ -350,7 +350,7 @@ class HockeyGame(bs.TeamGameActivity[Player, Team]):
         if self._ice_floor:
             activity.map.is_hockey = True
         else:
-            activity.map.is_hockey = False
+            activity.map.is_hockey = True
         activity.map.node.materials = [shared.footing_material]
         activity.map.floor.materials = [shared.footing_material]
         activity.map.floor.color = (0.2, 1.0, 0.2)
